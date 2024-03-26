@@ -11,42 +11,7 @@ using QuickFix.Transport;
 namespace ConsoleApp2
 {
 
-    public class SimpleAcceptorApp : /*QuickFix.MessageCracker,*/ QuickFix.IApplication
-    {
-        #region QuickFix.Application Methods
-
-        public void FromApp(Message message, SessionID sessionID)
-        {
-            Console.WriteLine("IN:  " + message);
-            //Crack(message, sessionID);
-            string msgType = message.Header.GetString(Tags.MsgType);
-            if (msgType.Equals(MsgType.EXECUTION_REPORT))
-            {
-                string account = message.GetString(Tags.Account);
-                decimal price = message.GetDecimal(Tags.Price);
-            }
-        }
-
-        public void ToApp(Message message, SessionID sessionID)
-        {
-            Console.WriteLine("OUT: " + message);
-        }
-
-        public void FromAdmin(Message message, SessionID sessionID)
-        {
-            Console.WriteLine("IN:  " + message);
-        }
-
-        public void ToAdmin(Message message, SessionID sessionID)
-        {
-            Console.WriteLine("OUT:  " + message);
-        }
-
-        public void OnCreate(SessionID sessionID) { }
-        public void OnLogout(SessionID sessionID) { }
-        public void OnLogon(SessionID sessionID) { }
-        #endregion
-    }
+    
 
     class Program
     {
