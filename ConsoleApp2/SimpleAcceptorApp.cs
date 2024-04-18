@@ -37,13 +37,20 @@ namespace ConsoleApp2
         public void OnLogout(SessionID sessionID) { }
         public void OnLogon(SessionID sessionID) { }
 
-        public void OnMessage(
-    QuickFix.FIX44.NewOrderSingle order,
-    SessionID sessionID)
+        public void OnMessage(QuickFix.FIX44.NewOrderSingle order,SessionID sessionID)
         {
             Console.WriteLine("GGGGGGG");
             Console.WriteLine("Msg Recived");
-
+        }
+        public void OnMessage(QuickFix.FIX44.OrderCancelRequest order,SessionID sessionID)
+        {
+            Console.WriteLine("FFFFFFFFF");
+            Console.WriteLine("Msg Recived");
+        }
+        public void OnMessage(QuickFix.FIX44.OrderCancelReplaceRequest order,SessionID sessionID)
+        {
+            Console.WriteLine("BBBBBBBBBB");
+            Console.WriteLine("Msg Recived");
         }
         #endregion
     }
