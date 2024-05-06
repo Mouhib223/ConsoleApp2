@@ -8,6 +8,12 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore" Version="1.1.1"></PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="C:\Users\MHlaili\Desktop\quickfixn-master\QuickFIXn\QuickFix.csproj" />
 	</ItemGroup>
 

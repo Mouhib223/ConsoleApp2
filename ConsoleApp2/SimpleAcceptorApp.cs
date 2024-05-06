@@ -1,4 +1,5 @@
-﻿using QuickFix;
+﻿using Newtonsoft.Json;
+using QuickFix;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace ConsoleApp2
         {
             Console.WriteLine("IN:  " + message);
             Crack(message, sessionID);
+            string json = message.ToJSON(); // Convert message to JSON
+            Console.WriteLine("IN: " + json);
 
         }
 
@@ -41,6 +44,7 @@ namespace ConsoleApp2
         {
             Console.WriteLine("GGGGGGG");
             Console.WriteLine("Msg Recived");
+           
         }
         public void OnMessage(QuickFix.FIX44.OrderCancelRequest order,SessionID sessionID)
         {

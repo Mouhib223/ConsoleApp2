@@ -7,6 +7,7 @@ using QuickFix.Logger;
 using QuickFix.Store;
 using QuickFix.Fields;
 using QuickFix.Transport;
+using Newtonsoft.Json;
 
 namespace ConsoleApp2
 {
@@ -18,14 +19,35 @@ namespace ConsoleApp2
         [STAThread]
         static void Main(string[] args)
         {
-            Console.WriteLine("=============");
-            Console.WriteLine("This is only an example program.");
+
+            
+
+
+            string logo = @"                             _             
+     /\                     | |            
+    /  \   ___ ___ ___ _ __ | |_ ___  _ __ 
+   / /\ \ / __/ __/ _ \ '_ \| __/ _ \| '__|
+  / ____ \ (_| (_|  __/ |_) | || (_) | |   
+ /_/    \_\___\___\___| .__/ \__\___/|_|   
+                      | |                  
+                      |_|                  ";
+            Console.WriteLine(logo);
+        
+            Console.WriteLine("===================================");
+            /*Console.WriteLine("This is only an example program.");
             Console.WriteLine("It's a simple server (e.g. Acceptor) app that will let clients (e.g. Initiators)");
             Console.WriteLine("connect to it.  It will accept and display any application-level messages that it receives.");
             Console.WriteLine("Connecting clients should set TargetCompID to 'SIMPLE' and SenderCompID to 'CLIENT1' or 'CLIENT2'.");
             Console.WriteLine("Port is 5001.");
-            Console.WriteLine("(see simpleacc.cfg for configuration details)");
-            Console.WriteLine("=============");
+            Console.WriteLine("(see simpleacc.cfg for configuration details)");*/
+            Console.WriteLine("                 Acceptor Ready !!");
+            Console.WriteLine("Ready and waiting for your command. Let's make magic happen!");
+            Console.WriteLine("************************************************************");
+            Console.WriteLine("************************************************************");
+            Console.WriteLine("************************************************************");
+            Console.WriteLine("************************************************************");
+            Console.WriteLine("************************************************************");
+            Console.WriteLine("===================================");
 
             if (args.Length != 1)
             {
@@ -42,7 +64,7 @@ namespace ConsoleApp2
                 IAcceptor acceptor = new ThreadedSocketAcceptor(app, storeFactory, settings, logFactory);
 
                 acceptor.Start();
-                Console.WriteLine("press <enter> to quit");
+                Console.WriteLine("if you are Done, press <enter> to quit");
                 Console.Read();
                 acceptor.Stop();
             }
@@ -53,4 +75,5 @@ namespace ConsoleApp2
             }
         }
     }
+
 }
