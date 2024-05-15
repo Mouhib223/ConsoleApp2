@@ -2,7 +2,9 @@
 using QuickFix;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,10 +16,39 @@ namespace ConsoleApp2
 
         public void FromApp(Message message, SessionID sessionID)
         {
-            Console.WriteLine("IN:  " + message);
+            Console.WriteLine("IN: " + message);
             Crack(message, sessionID);
-            string json = message.ToJSON(); // Convert message to JSON
-            Console.WriteLine("IN: " + json);
+
+            // Convert message to JSON
+            string json = message.ToJSON();
+            Console.WriteLine("This is the JSON format: " + json);
+
+            // Serialize JSON
+            string JSONresult = JsonConvert.SerializeObject(json);
+
+            // File path for JSON output
+            string path = @"C:\Users\MHlaili\Desktop\json\fix.json";
+
+            // Clear the content of the file before writing new JSON data
+            File.WriteAllText(path, string.Empty);
+
+            // Write JSON to file
+            using (var tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine(JSONresult);
+                tw.Close();
+            }
+
+            // Send JSON to API
+            string result = "";
+            using (var client = new WebClient())
+            {
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
+                result = client.UploadString("http://localhost:5268/api/Rules/endpoint", "POST", JSONresult);
+            }
+            Console.WriteLine(result);
+
+
 
         }
 
