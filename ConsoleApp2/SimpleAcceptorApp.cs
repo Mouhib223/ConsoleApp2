@@ -75,6 +75,9 @@ namespace ConsoleApp2
         {
             Console.WriteLine("GGGGGGG");
             Console.WriteLine("Msg Recived");
+
+            Session.SendToTarget(order, sessionID);
+            ToApp(null, sessionID);
            
         }
         public void OnMessage(QuickFix.FIX44.OrderCancelRequest order,SessionID sessionID)
